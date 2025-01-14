@@ -1,4 +1,5 @@
 # something something
+import sys
 
 def print_report(book_path: str, no_of_words: int, total_letter_dict: dict):
     print(f"--- Begin report of {book_path} ---")
@@ -37,9 +38,14 @@ def count_words(input_string: str):
     print(len(input_string.split()))
 
 def main():
-    book_path = "books/frankenstein.txt"
-    with open(book_path) as f:
-        file_contents = f.read()
-        print_report(book_path, count_words(file_contents), count_characters(file_contents))
+    if len(sys.argv) > 1:
+        
+        book_path = sys.argv[1]
 
+        with open(book_path) as f:
+            file_contents = f.read()
+            print_report(book_path, count_words(file_contents), count_characters(file_contents))
+
+    else:
+        print("Add filepath")
 main()
