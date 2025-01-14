@@ -4,15 +4,13 @@ def print_report(book_path: str, no_of_words: int, total_letter_dict: dict):
     print(f"--- Begin report of {book_path} ---")
     print(f"{no_of_words} words found in the document")
 
-    sort_on = lambda dict:dict["num"]
-
     #convert dict to list of dict
     sorted_list = []
 
     for letter in total_letter_dict:
         sorted_list.append({"letter":letter, "num":total_letter_dict[letter]})
 
-    sorted_list.sort(reverse=True, key=sort_on)
+    sorted_list.sort(reverse=True, key=lambda dict:dict["num"])
 
     for entry in sorted_list:
         print(f"The '{entry["letter"]}' character was found {entry["num"]} times")
